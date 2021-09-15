@@ -6,11 +6,13 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/09/15 16:04:14 by adelille         ###   ########.fr        #
+#    Updated: 2021/09/15 16:26:18 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	minitalk
+NAMES =	server
+NAMEC =	client
 CC = 	clang -Wall -Werror -Wextra
 AR =	ar rcs
 RM = 	rm -rf
@@ -55,7 +57,8 @@ OBJSNAME = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAME)))
 
 %.o: %.c
-	$(CC) $(FLAGS) $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
+	$(CC) $(FLAGS) $(BUFFER) -c $< -o $(OBJSPATH)$(notdir $@)
+#	$(CC) $(FLAGS) $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
 
 # *************************************************************************** #
 
@@ -63,8 +66,8 @@ all:		$(NAME)
 
 $(NAME):	objs_dir $(OBJSNAME) lib
 	#@$(AR) $(NAME) $(OBJS)
-	@$(CC) $(FLAGS) objs/ft_server.o $(LBNAME) -o server -lm
-	@$(CC) $(FLAGS) objs/ft_client.o $(LBNAME) -o client -lm
+	@$(CC) $(FLAGS) objs/ft_server.o $(LBNAME) -o $(NAMES) -lm
+	@$(CC) $(FLAGS) objs/ft_client.o $(LBNAME) -o $(NAMEC) -lm
 	@echo "$(B)$(MAG)$(NAME) compiled.$(D)"
 
 objs_dir:
@@ -81,7 +84,8 @@ clean:
 
 fclean:		clean
 	@$(RM) $(OBJSPATH)
-	@$(RM) $(NAME)
+	@$(RM) $(NAMES)
+	@$(RM) $(NAMEC)
 	@make fclean -C $(LBPATH)
 
 re:			fclean all
