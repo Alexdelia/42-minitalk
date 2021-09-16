@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:14:52 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 18:55:30 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:01:48 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <signal.h>
 # include "../libft/libft.h"
 
-typedef struct	s_byte
+typedef struct s_byte
 {
 	int		index;
 	int		cpid;

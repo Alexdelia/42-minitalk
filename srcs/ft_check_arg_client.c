@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:05:07 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 18:52:13 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:01:31 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_arg_client(int ac, char **av)
 				+ ft_pserc("Need PID of server then the message\n", RED))
 			* 0 + 1);
 	pid = ft_atol(av[1]);
-	if (ft_check_digits(av[1] == FALSE || pid > INT_MAX || pid < 0)
+	if (ft_check_digits(av[1]) == FALSE || pid > INT_MAX || pid < 0)
 		return (ft_pserc("Error: Server PID invalid\n") * 0 + 1);
 	return (0);
 }

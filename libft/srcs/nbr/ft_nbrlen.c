@@ -6,13 +6,13 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 14:39:24 by adelille          #+#    #+#             */
-/*   Updated: 2021/04/13 14:55:22 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:00:59 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_nbrlen(int nb)
+int	ft_nbrlen(int nb)
 {
 	unsigned int	n;
 	int				i;
