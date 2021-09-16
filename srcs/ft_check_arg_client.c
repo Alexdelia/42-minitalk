@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:05:07 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 19:01:31 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:05:00 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_check_digits(char *str)
 	return (TRUE);
 }
 
-int	check_arg_client(int ac, char **av)
+int	ft_check_arg_client(int ac, char **av)
 {
 	long	pid;
 

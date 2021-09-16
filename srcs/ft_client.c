@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:13:23 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 18:04:42 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:06:50 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,16 @@ static void	ft_kill(int pid, char *str)
 
 int	main(int ac, char **av)
 {
-	if (ac != 3 || !ft_strlen(av[2]))
+	int	i;
+	int	server_id;
+	int	client_id;
+
+	if (ft_check_arg_client(ac, av) == 1)
 		return (1);
-	ft_ps("Sent\t: ");
-	ft_pn(ft_strlen(av[2]));
-	ft_ps("\n");
-	ft_ps("Received: ");
-	s_sig.sa_handler = ft_sigaction;
-	s_sig.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &s_sig, 0);
-	sigaction(SIGUSR2, &s_sig, 0);
-	ft_kill(ft_atoi(av[1]), av[2]);
+	signal(SIGUSR1, ft_signal);
+	client_id = get_pid();
+	server_id = ft_atoi(av[1]);
+	i = 0;
 	while (1)
 		pause();
 	return (0);

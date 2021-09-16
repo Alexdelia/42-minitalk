@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/09/16 18:58:03 by adelille         ###   ########.fr        #
+#    Updated: 2021/09/16 19:47:41 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ all:		$(NAME)
 $(NAME):	objs_dir $(OBJSNAME) #lib
 	@$(AR) $(NAME) $(OBJS)
 	#@$(CC) $(FLAGS) $(OBJS) $(LBNAME) -o $(NAME)
-	@echo "$(B)$(MAG)$(NAME) compiled.$(D)"
+#	@echo "$(B)$(MAG)$(NAME) compiled.$(D)"
 
 objs_dir:
 	@mkdir $(OBJSPATH) 2> /dev/null || true
@@ -93,7 +93,7 @@ objs_dir:
 clean:
 	@$(RM) $(OBJSPATH)
 # @make clean -C $(LBPATH)
-	@echo "$(B)Cleared.$(D)"
+	#@echo "$(B)Cleared.$(D)"
 
 
 fclean:		clean

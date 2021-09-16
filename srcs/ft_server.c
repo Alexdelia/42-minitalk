@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:10:09 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 18:02:28 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 19:02:47 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	ft_process_client(void)
 		if (byte != -1)
 			write(1, &byte, 1);
 	}
-	kill(pid, SIGUSR1)
+	kill(pid, SIGUSR1);
 	return (pid);
 }
 
