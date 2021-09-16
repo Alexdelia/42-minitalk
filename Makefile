@@ -6,7 +6,7 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/09/16 17:13:51 by adelille         ###   ########.fr        #
+#    Updated: 2021/09/16 18:57:08 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,14 +51,14 @@ INC =		./includes/
 
 SRCSNAMESERVER =	ft_server.c
 SRCSNAMECLIENT =	ft_client.c
-SRCSNAME =	ft_x.c
+#SRCSNAME =	main.c
 
-SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
+#SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
 SRCSSERVER = $(addprefix $(SRCSPATH), $(SRCSNAMESERVER))
 SRCSCLIENT = $(addprefix $(SRCSPATH), $(SRCSNAMECLIENT))
 
-OBJSNAME = $(SRCS:.c=.o)
-OBJS = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAME)))
+#OBJSNAME = $(SRCS:.c=.o)
+#OBJS = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAME)))
 OBJSNAMESERVER = $(SRCSSERVER:.c=.o)
 OBJSSERVER = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAMESERVER)))
 OBJSNAMECLIENT = $(SRCSCLIENT:.c=.o)
@@ -71,7 +71,7 @@ OBJSCLIENT = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAMECLIENT)))
 
 all:		$(NAME)
 
-$(NAME):	objs_dir $(OBJSNAME) lib
+$(NAME):	objs_dir $(OBJSNAMESERVER) $(OBJSNAMECLIENT) lib
 	#@$(AR) $(NAME) $(OBJS)
 	@$(CC) $(FLAGS) $(OBJSSERVER) $(OBJS) $(LBNAME) -o $(NAMES) -lm
 	@$(CC) $(FLAGS) $(OBJSCLIENT) $(OBJS) $(LBNAME) -o $(NAMEC) -lm
@@ -84,7 +84,7 @@ lib:
 	@make -C $(LBPATH)
 
 clean:
-	@$(RM) $(OBJSNAME) $(OBJSSERVER) $(OBJSCLIENT)
+	@$(RM) $(OBJSSERVER) $(OBJSCLIENT) #$(OBJSNAME)
 	@make clean -C $(LBPATH)
 	@echo "$(B)Cleared.$(D)"
 

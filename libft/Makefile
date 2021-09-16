@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2021/09/15 16:24:48 by adelille         ###   ########.fr        #
+#    Updated: 2021/09/16 18:58:03 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ INC =		./includes/
 SRCSNAME =	I-O/ft_ps.c I-O/parse/get_next_line.c I-O/parse/get_next_line_utils.c \
 				I-O/ft_putchar_fd.c I-O/ft_putendl_fd.c I-O/ft_putnbr_fd.c I-O/ft_putstr_fd.c \
 				I-O/ft_pn.c \
-				str/ft_atoi.c str/ft_itoa.c str/ft_bzero.c str/ft_split.c str/ft_strchr.c \
+				str/ft_atoi.c str/ft_atol.c str/ft_itoa.c \
+				str/ft_bzero.c str/ft_split.c str/ft_strchr.c \
 				str/ft_strcmp.c str/ft_strdup.c str/ft_strjoin.c str/ft_strlcat.c \
 				str/ft_strlcpy.c str/ft_strlen.c str/ft_strmapi.c str/ft_strncmp.c \
 				str/ft_strnstr.c str/ft_strrchr.c str/ft_strtrim.c str/ft_substr.c \
@@ -78,7 +79,7 @@ all:		$(NAME)
 $(NAME):	objs_dir $(OBJSNAME) #lib
 	@$(AR) $(NAME) $(OBJS)
 	#@$(CC) $(FLAGS) $(OBJS) $(LBNAME) -o $(NAME)
-#	@echo "$(B)$(MAG)$(NAME) compiled.$(D)"
+	@echo "$(B)$(MAG)$(NAME) compiled.$(D)"
 
 objs_dir:
 	@mkdir $(OBJSPATH) 2> /dev/null || true
@@ -92,7 +93,7 @@ objs_dir:
 clean:
 	@$(RM) $(OBJSPATH)
 # @make clean -C $(LBPATH)
-#	@echo "$(B)Cleared.$(D)"
+	@echo "$(B)Cleared.$(D)"
 
 
 fclean:		clean

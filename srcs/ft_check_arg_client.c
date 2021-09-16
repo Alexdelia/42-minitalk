@@ -6,15 +6,23 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 18:05:07 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 18:48:15 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 18:52:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-int	ft_check_digits(char *str)
+static int	ft_check_digits(char *str)
 {
+	int	i;
 
+	if (!str[0] || str[0] < '0' || str[0] > '9')
+		return (FALSE);
+	i = -1;
+	while (str[++i])
+		if (str[i] < '0' || str[i] > '9')
+			return (FALSE);
+	return (TRUE);
 }
 
 int	check_arg_client(int ac, char **av)
