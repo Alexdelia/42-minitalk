@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:10:09 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 16:42:49 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 17:32:53 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,17 @@ static void	ft_sigaction(int sig, siginfo_t *siginfo, void *context)
 		c <<= 1; // bitwise left shift assignement
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	struct sigaction	s_sig; // man sigaction: https://man7.org/linux/man-pages/man2/sigaction.2.html
-
-	ft_ps("Server PID: ");
+	// check av 
+	ft_ps("Server PID [");
 	ft_pn(getpid());
-	ft_ps("\n");
-	s_sig.sa_sigaction = ft_sigaction;
-	s_sig.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &s_sig, 0); // man signal: https://man7.org/linux/man-pages/man7/signal.7.html
-	sigaction(SIGUSR2, &s_sig, 0);
+	ft_ps("]\n");
+	signal(SIGUSR1, ft_signal);
+	signal(SIGUSR2, ft_signal);
 	while (1)
-		pause();
+	{
+		ft_process_client();
+	}
 	return (0);
 }

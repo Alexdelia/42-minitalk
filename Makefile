@@ -6,7 +6,7 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/09/15 16:26:18 by adelille         ###   ########.fr        #
+#    Updated: 2021/09/16 17:13:51 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = 	clang -Wall -Werror -Wextra
 AR =	ar rcs
 RM = 	rm -rf
 # FLAGS +=	-O2
-FLAGS =	-g# -fsanitize=address
+#FLAGS =	-g# -fsanitize=address
 
 # **************************************************************************** #
 
@@ -47,18 +47,25 @@ LBINC =		-I$(LBPATH)
 
 SRCSPATH =	./srcs/
 OBJSPATH =	./objs/
-#INC =		./includes/
+INC =		./includes/
 
-SRCSNAME =	ft_server.c \
-			ft_client.c
+SRCSNAMESERVER =	ft_server.c
+SRCSNAMECLIENT =	ft_client.c
+SRCSNAME =	ft_x.c
 
 SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))
+SRCSSERVER = $(addprefix $(SRCSPATH), $(SRCSNAMESERVER))
+SRCSCLIENT = $(addprefix $(SRCSPATH), $(SRCSNAMECLIENT))
+
 OBJSNAME = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAME)))
+OBJSNAMESERVER = $(SRCSSERVER:.c=.o)
+OBJSSERVER = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAMESERVER)))
+OBJSNAMECLIENT = $(SRCSCLIENT:.c=.o)
+OBJSCLIENT = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAMECLIENT)))
 
 %.o: %.c
-	$(CC) $(FLAGS) $(BUFFER) -c $< -o $(OBJSPATH)$(notdir $@)
-#	$(CC) $(FLAGS) $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
+	$(CC) $(FLAGS) $(BUFFER) -I$(INC) -c $< -o $(OBJSPATH)$(notdir $@)
 
 # *************************************************************************** #
 
@@ -66,8 +73,8 @@ all:		$(NAME)
 
 $(NAME):	objs_dir $(OBJSNAME) lib
 	#@$(AR) $(NAME) $(OBJS)
-	@$(CC) $(FLAGS) objs/ft_server.o $(LBNAME) -o $(NAMES) -lm
-	@$(CC) $(FLAGS) objs/ft_client.o $(LBNAME) -o $(NAMEC) -lm
+	@$(CC) $(FLAGS) $(OBJSSERVER) $(OBJS) $(LBNAME) -o $(NAMES) -lm
+	@$(CC) $(FLAGS) $(OBJSCLIENT) $(OBJS) $(LBNAME) -o $(NAMEC) -lm
 	@echo "$(B)$(MAG)$(NAME) compiled.$(D)"
 
 objs_dir:
@@ -77,7 +84,7 @@ lib:
 	@make -C $(LBPATH)
 
 clean:
-	@$(RM) $(OBJSNAME)
+	@$(RM) $(OBJSNAME) $(OBJSSERVER) $(OBJSCLIENT)
 	@make clean -C $(LBPATH)
 	@echo "$(B)Cleared.$(D)"
 
