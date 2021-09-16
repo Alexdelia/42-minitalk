@@ -6,7 +6,7 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/09/16 18:57:08 by adelille         ###   ########.fr        #
+#    Updated: 2021/09/16 20:50:46 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ OBJSPATH =	./objs/
 INC =		./includes/
 
 SRCSNAMESERVER =	ft_server.c
-SRCSNAMECLIENT =	ft_client.c
+SRCSNAMECLIENT =	ft_client.c \
+					ft_check_arg_client.c
 #SRCSNAME =	main.c
 
 #SRCS = $(addprefix $(SRCSPATH), $(SRCSNAME))

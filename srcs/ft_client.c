@@ -6,50 +6,49 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:13:23 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 19:06:50 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 20:50:10 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-static void	ft_sigaction(int sig)
+static void	ft_signal(int sig)
 {
-	static int	received = 0;
-
 	if (sig == SIGUSR1)
-		++received;
-	else
+		ft_ps("Sent\n");
+}
+
+static void	ft_send_byte(int c, int server_id)
+{
+	int	i;
+
+	i = 7;
+	while (i >= 0)
 	{
-		ft_pn(received);
-		ft_ps("\n");
-		exit(0);
+		if ((c & (1 << i)) == 0)
+			kill(server_id, SIGUSR1);
+		else
+			kill(server_id, SIGUSR2);
+		usleep(200);
+		--i;
 	}
 }
 
-static void	ft_kill(int pid, char *str)
+static void	ft_send_client_pid(int client_id, int server_id)
 {
+	char	buffer[65]; // 8 * 8 + 1
 	int		i;
-	char	c;
 
-	while (*str)
+	i = 0;
+	while (client_id)
 	{
-		i = 8;
-		c = *str++;
-		while (i--)
-		{
-			if (c >> i & 1)
-				kill(pid, SIGUSR2);
-			else
-				kill(pid, SIGUSR1);
-			usleep(100);
-		}
+		buffer[i] = client_id % 10 + 48;
+		client_id /= 10;
+		i++;
 	}
-	i = 8;
 	while (i--)
-	{
-		kill(pid, SIGUSR1);
-		usleep(100);
-	}
+		ft_send_byte(buffer[i], server_id);
+	ft_send_byte(0, server_id);
 }
 
 int	main(int ac, char **av)
@@ -61,10 +60,12 @@ int	main(int ac, char **av)
 	if (ft_check_arg_client(ac, av) == 1)
 		return (1);
 	signal(SIGUSR1, ft_signal);
-	client_id = get_pid();
+	client_id = getpid();
 	server_id = ft_atoi(av[1]);
+	ft_send_client_pid(client_id, server_id);
 	i = 0;
 	while (1)
-		pause();
+		ft_send_byte(av[2][i++], server_id);
+	ft_send_byte(0, server_id);
 	return (0);
 }
