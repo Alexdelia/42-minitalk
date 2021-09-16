@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:13:23 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 17:55:25 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/16 18:04:42 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ static void	ft_kill(int pid, char *str)
 
 int	main(int ac, char **av)
 {
-	struct sigaction	s_sig;
-
 	if (ac != 3 || !ft_strlen(av[2]))
 		return (1);
 	ft_ps("Sent\t: ");
