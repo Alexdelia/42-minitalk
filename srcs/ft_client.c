@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:13:23 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/17 12:14:35 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/17 12:18:55 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_send_byte(int c, int server_id)
 
 static void	ft_send_client_pid(int client_id, int server_id)
 {
-	char	buffer[65]; // 8 * 8 + 1
+	char	buffer[65];
 	int		i;
 
 	i = 0;
