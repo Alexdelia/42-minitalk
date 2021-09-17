@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:13:23 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 20:50:10 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/17 12:14:35 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	main(int ac, char **av)
 	server_id = ft_atoi(av[1]);
 	ft_send_client_pid(client_id, server_id);
 	i = 0;
-	while (1)
+	while (av[2][i])
 		ft_send_byte(av[2][i++], server_id);
 	ft_send_byte(0, server_id);
 	return (0);
