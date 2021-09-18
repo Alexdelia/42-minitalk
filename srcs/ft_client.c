@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:13:23 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/18 17:46:12 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/18 17:52:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_send_byte(int c, int server_id)
 			kill(server_id, SIGUSR1);
 		else
 			kill(server_id, SIGUSR2);
-		usleep(200);
+		usleep(800);
 		--i;
 	}
 }
