@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 17:14:52 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/16 19:05:06 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/18 17:48:11 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <signal.h>
+# include <limits.h>
 # include "../libft/includes/libft.h"
 
 typedef struct s_byte

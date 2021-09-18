@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:13:23 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/17 12:18:55 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/18 17:46:12 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_signal(int sig)
 {
 	if (sig == SIGUSR1)
-		ft_ps("Sent\n");
+		ft_psc("Sent\n", BWHI);
 }
 
 static void	ft_send_byte(int c, int server_id)

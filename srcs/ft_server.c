@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 16:10:09 by adelille          #+#    #+#             */
-/*   Updated: 2021/09/17 12:16:14 by adelille         ###   ########.fr       */
+/*   Updated: 2021/09/18 17:47:01 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int	main(int ac, char **av)
 	(void)av;
 	if (ac > 1)
 		return (ft_pserc("Server: No arguments needed\n", RED) * 0 + 1);
-	ft_ps("Server PID [");
-	ft_pn(getpid());
-	ft_ps("]\n");
+	ft_psc("Server PID [", BWHI);
+	ft_pnc(getpid(), BIMAG);
+	ft_psc("]\n", BWHI);
 	signal(SIGUSR1, ft_signal);
 	signal(SIGUSR2, ft_signal);
 	while (1)
