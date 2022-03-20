@@ -6,7 +6,7 @@
 #    By: adelille <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/15 15:56:29 by adelille          #+#    #+#              #
-#    Updated: 2021/09/16 20:50:46 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/20 16:29:18 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,16 +72,16 @@ OBJSCLIENT = $(addprefix $(OBJSPATH), $(notdir $(OBJSNAMECLIENT)))
 
 all:		$(NAME)
 
-$(NAME):	objs_dir $(OBJSNAMESERVER) $(OBJSNAMECLIENT) lib
+$(NAME):	objs_dir $(OBJSNAMESERVER) $(OBJSNAMECLIENT) $(LBNAME)
 	#@$(AR) $(NAME) $(OBJS)
 	@$(CC) $(FLAGS) $(OBJSSERVER) $(OBJS) $(LBNAME) -o $(NAMES) -lm
 	@$(CC) $(FLAGS) $(OBJSCLIENT) $(OBJS) $(LBNAME) -o $(NAMEC) -lm
 	@echo "$(B)$(MAG)$(NAME) compiled.$(D)"
 
 objs_dir:
-	@mkdir $(OBJSPATH) 2> /dev/null || true
+	@mkdir -p $(OBJSPATH)
 	
-lib:
+$(LBNAME):
 	@make -C $(LBPATH)
 
 clean:
@@ -98,4 +98,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: all clean fclean re objs_dir lib
+.PHONY: all clean fclean re objs_dir
